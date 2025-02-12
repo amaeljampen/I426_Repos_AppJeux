@@ -4,11 +4,6 @@ body{
     background-attachment: fixed;
     background-position: center;
     background-size: 3005px 2005px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
 table{
@@ -18,10 +13,4 @@ table{
 td{
     border: 1px solid white;
     padding: 10px;
-}
-
-.container {
-    width: 200px;
-    height: 200px;
-    background-color: lightblue;
 }
