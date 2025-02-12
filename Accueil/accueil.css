@@ -1,0 +1,53 @@
+body {
+    background-image: url("./images/Fond_galaxie.jpg");
+}
+
+img {
+    width: 75px;
+    height: 75px;
+}
+
+#titre {
+    color: #A0C4FF;
+    text-align: center;
+    font-size: 75px;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center; /* Aligne verticalement les éléments */
+    background-color: #999999;
+    padding: 10px 20px;
+    width: 100%;
+    justify-content: space-between; /* Espacement entre le texte et les icônes */
+}
+
+.contact {
+    display: flex;
+    align-items: center; /* Assure que le texte est bien centré verticalement */
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px; /* Espacement entre les icônes */
+}
+
+.logo {
+    width: 48px; /* Taille similaire au texte */
+    height: 48px;
+}
+
+button {
+    background-color: white;
+    font-size: 75px;
+    color: black;
+    border-radius: 50%;
+}
+
+#selection_jeu {
+    text-align: center;
+}
+
+#haut_de_page {
+
+}
