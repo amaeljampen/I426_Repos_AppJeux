@@ -4,5 +4,5 @@
 // let Woordle = document.getElementById();
 // let Demineur = document.getElementById();
 
-const list_game = ["2048.png", "FlappyBird.png", "Snake.png", "Woordle.png", "Demineur.png"]
+const list_game = ["2048.png", "FlappyBird.png", "Snake.png", "Woordle.png", "DinoWifi.png"]
 
