@@ -9,27 +9,32 @@ hr {
 }
 h2 {
     display: inline-flex;
-    padding: 24px 102px 24px 102px;
+    padding: 20px 100px ; /* Ajusté pour une meilleure taille */
     justify-content: right;
     align-items: center;
 
     border-radius: 70px;
     background: #FFF;
 }
-button{
-
+button {
     display: inline-flex;
-    padding: 51px 64px;
-    justify-content: column;
+    padding:  20px 100px; /* Ajusté pour une meilleure taille */
+    flex-direction: column; /* Empile les éléments internes */
     align-items: center;
     border-radius: 70px;
     background: #FFF;
     cursor: pointer;
-    
+    text-align: center;
 }
+
 .container {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end; /* Alignement à droite */
+    position: absolute;
+    top: 60px; /* Ajuste selon besoin */
+    right: 60px; /* Colle à droite */
+    gap: 0px; /* Espacement entre les éléments */
 }
 
 #board {
@@ -39,7 +44,8 @@ button{
     background-color: #cdc1b5;
     border: 6px solid #bbada0;
 
-    margin: 0 auto;
+    
+    margin: 150px auto; 
     display: flex;
     flex-wrap: wrap;
 }
