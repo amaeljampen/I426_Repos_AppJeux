@@ -1,0 +1,54 @@
+body{
+    color: white;
+    background-image: url(../Assets/fond_étoiler.jpeg);
+}
+
+div{
+    color: white;
+}
+
+#buttons{
+    height: 500px;
+}
+
+#accueilButton{
+    margin: 10px;
+}
+
+#nextButton{
+    margin: 10px;
+}
+
+#playButton{
+    margin: 10px;
+}
+
+#upperButtons{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    margin-bottom: 200px;
+}
+
+#lowerButtons{
+    display: flex;
+    flex-direction: column-reverse;
+    color: black;
+}
+
+#title-slider{
+    height: 300px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+button{
+    margin: 1%;
+    width: 150px;
+    height: 75px;
+}
+
+#gameImage{
+    height: 350px;
+    width: 350px;
+}
