@@ -1,0 +1,8 @@
+html, body {
+    background-image: url("../Accueil/images/Fond_galaxie.jpg");
+}
+
+.logo {
+    width: 75px;
+    height: auto;
+}
