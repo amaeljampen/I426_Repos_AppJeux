@@ -7,6 +7,17 @@ div{
     color: white;
 }
 
+#logo{
+    width: 75px;    
+    height: 75px;
+    margin: 15px;
+}
+
+#mainContent{
+    width: 1500px;
+    display: flex;
+    justify-content: space-evenly;
+}
 #buttons{
     height: 500px;
 }
@@ -37,7 +48,7 @@ div{
 }
 
 #title-slider{
-    height: 300px;
+    height: 200px;
     display: flex;
     flex-direction: column-reverse;
 }
