@@ -50,5 +50,5 @@ button{
 
 #gameImage{
     height: 350px;
-    width: 350px;
+    width: auto;
 }
