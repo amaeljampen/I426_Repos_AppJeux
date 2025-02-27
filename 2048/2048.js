@@ -74,8 +74,6 @@ document.addEventListener('keydown', (e) => {
         }, 200);
     }
 });
-
-
 function filterZero(row) {
     return row.filter(num => num !== 0);
 }
@@ -184,14 +182,12 @@ function isGameOver() {
         }
     }
 
-    // Mise à jour du meilleur score avant d'afficher le message de Game Over
     if (score > bestScore) {
         bestScore = score;
         localStorage.setItem("bestScore", bestScore);
         document.getElementById("best-score").innerText = bestScore;
     }
 
-    // Affichage immédiat du message Game Over
     setTimeout(() => {
         alert("Game Over! Votre score : " + score);
         restartGame();
