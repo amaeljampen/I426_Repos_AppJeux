@@ -91,6 +91,15 @@
             align-items: center;
             background-color: #FFF;
         }
+        .canvas {
+            width: 432px; /* 288px * 1.5 */
+            height: 670px; /* 512px * 1.5 */
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFF;
+        }
         .imageBox img {
             width: 100%;
             height: 100%;
@@ -101,7 +110,7 @@
   </head>
   <body>
     <!-- Background image field -->
-    <img class="bgImage" src="C:\Users\px80gjy\Desktop\ProjAgile\I426_Repos_AppJeux\Flappy_bird\textures\fond_étoiler (1).jpeg" alt="Background Image">
+    <img class="bgImage" src="textures\fond.png" alt="Background Image">
 
     <!-- Button at the top left -->
     <button class="button" style="font-weight: bold">Accueil</button>
@@ -126,8 +135,8 @@
 
         <!-- Buttons with images -->
         <div class="characterButtons">
-            <img src="C:\Users\px80gjy\Desktop\ProjAgile\I426_Repos_AppJeux\Flappy_bird\textures\fb_menu.png" style="height: 80px; width: 100px;" alt="Character 1">
-            <img src="C:\Users\px80gjy\Desktop\ProjAgile\I426_Repos_AppJeux\Flappy_bird\textures\2ndBird.png" alt="Character 2">
+            <img src="textures\fb_menu.png" style="height: 80px; width: 100px;" alt="Character 1">
+            <img src="textures\2ndBird.png" alt="Character 2">
         </div>
     </div>
 
@@ -135,10 +144,16 @@
    
     <!-- Canvas field -->
     <!-- <canvas id="flappyBird" width="288" height="512"></canvas> -->
+    <!--<canvas id="flappyBird"></canvas>-->
+
+
+
+
     <div class="imageBox">
         <img src="C:\Users\px80gjy\Desktop\ProjAgile\I426_Repos_AppJeux\Flappy_bird\textures\model.png" alt="Image" id="imagePlaceholder">
     </div>
 
-   <script src="flappyBird.js"></script>
+
+   <script src="flappy_bird.js"></script>
   </body>
 </html>
