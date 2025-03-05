@@ -1,11 +1,11 @@
 html, body {
     background-image: url("./images/Fond_galaxie.jpg");
-    height: 100vh; /* Assure que le body prend toute la hauteur */
+    height: 100vh; /* L'ensemble de la page prend toute la hauteur */
     margin: 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
-
 
 img {
     width: 75px;
@@ -14,9 +14,11 @@ img {
 
 #titre {
     color: #A0C4FF;
-    flex-grow: 1; /* Permet au titre de prendre l'espace restant */
     text-align: center;
-    font-size: 75px;
+    font-size: 5vw;
+    margin: 0;
+    flex-shrink: 0; /* Empêche le titre de se rétrécir */
+    flex-grow: 1;
 }
 
 .footer-container {
@@ -25,20 +27,17 @@ img {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .footer {
-    margin-top: 95px;
+    margin-top: auto;
 }
 
 .social-icons {
     display: flex;
-    gap: 10px; /* Espacement entre les icônes */
-}
-
-.logo {
-    width: 50px; /* Ajustez selon la taille souhaitée */
-    height: auto;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 button {
@@ -46,27 +45,63 @@ button {
     font-size: 75px;
     color: black;
     border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .game {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
     position: relative;
+    width: 100%;
+    max-width: 80vw; /* Limite la largeur du jeu */
+    max-height: 80vh; /* Limite la hauteur du jeu */
+    margin: 0 auto; /* Centrer horizontalement */
 }
 
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Ajustez selon vos besoins */
+    justify-content: space-between; /* Logo à gauche, titre au centre */
     padding: 10px;
+    width: 100%;
+    margin-bottom: 20px; /* Ajoute de l'espace entre le titre et le jeu */
 }
 
 .game_choose {
-    width: 450px;
+    width: 100%;
     height: auto;
+    object-fit: contain;
     z-index: 1;
+}
+
+#game_title {
+    color: #A0C4FF;
+    text-align: center;
+    font-size: 5vw;
+}
+
+.game_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative; /* Ajout pour positionner les boutons */
+}
+
+.button_container {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 100%;
 }
 
 .button_select {
@@ -80,26 +115,55 @@ button {
     cursor: pointer;
 }
 
-#game_title {
-    color: #A0C4FF;
-    text-align: center;
+/* Positionnement des boutons à gauche et droite */
+.button_select.left {
+    left: 10px;
 }
 
-.game_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.button_select.right {
+    right: 10px;
 }
 
-.button_container {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
+@media (max-width: 768px) {
+    #titre {
+        font-size: 6vw;
+    }
+    .game_choose {
+        width: 60vw;
+    }
+    .button_select {
+        font-size: 40px;
+    }
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    .game {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #titre {
+        font-size: 8vw;
+    }
+    .game_choose {
+        width: 70vw;
+    }
+    .button_select {
+        font-size: 35px;
+        width: 60px;
+        height: 60px;
+    }
+    .footer-container {
+        padding: 5px 10px;
+    }
+    .social-icons img {
+        width: 40px;
+        height: 40px;
+    }
 }
