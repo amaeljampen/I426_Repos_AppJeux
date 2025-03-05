@@ -1,0 +1,416 @@
+
+I426, Procès-verbaux
+Amael Jampen
+
+Introduction
+
+Cette documentation contient chacun des procès-verbaux des reviews réalisées durant le projet, voici donc comment est articulé cette documentation :
+
+•	Les « sprint review » sont les reviews réalisées avec les products owners (contient généralement la liste des fonctionnalités à modifier/ajouter)
+
+•	Les « reviews » simples sont les reviews réalisées avec les products owners (contient généralement les tâches à réaliser, en fonction des informations données par les PO lors de la sprint review, et le temps estimé par les développeurs pour chacune des tâches à réaliser. Les reviews simple suivent généralement les sprints reviews)
+
+•	Les « Sprint rétrospectives » sont les réunions faites à la fin de chacun des sprints ou l’on discute des problèmes d’efficacité rencontrés durant le sprint et ou l’on défini les solutions à ces problèmes
+
+•	Les « Daily scrums » sont un résumé du ressenti de chacun des développeurs par rapport au travail réalisé (normalement réalisé chaque jour de travail pendant 15 min au début du cours)
+
+
+
+ 
+Sprint review 1, 29.01.2025
+
+Fonctionnalités créées
+
+Durant cette review, il a été discuté des éléments définis lors de la mise en route du projet, voici donc les différentes informations définies durant cette review.
+
+Durant cette review, il a été discuté de l’état de la première version des maquettes, ces maquettes étaient plus une prévisualisation de ce à quoi allait ressembler la suite (notamment avec un zoning des pages du site).
+
+Fonctionnalités à réaliser
+
+Il a ensuite été discuté des différentes fonctionnalités qui devaient être présentes dans les maquettes et combien de temps cela allait prendre à être réalisé. Voici donc un petit récapitulatif de ce qui à été défini lors de cette discussion :
+
+Le jeu doit contenir : 
+
+•	Une page d’accueil
+•	Une page de présentation des jeux 
+•	Puis chacun des jeux suivants :
+o	Snake
+o	Flappy Bird
+o	Wordle
+o	2048
+o	Jeu d’échecs
+
+Chacune des pages décrites doivent suivre les conventions suivantes :
+•	Les pages doivent avoir un fond étoilé
+•	Les palettes de couleurs doivent être composées entièrement de noir et blanc
+•	La police d’écriture doit être blanche
+•	Les couleurs des jeux sont choisies par les développeurs
+
+Review 1.1, 30.01.2025
+
+À la suite de la définition des différentes fonctionnalités par les Product owners, il a ensuite été défini, avec les diffèrents développeurs, le temps que prendrait chaque maquette à être réalisées, voici donc un résumé des temps définis par le groupe de développeurs :
+
+Maquette	Temps estimé de réalisation
+Accueil	45 min
+Page de présentation des jeux 	30 min
+Page de jeu (juste le fond)	15 min par page
+
+ 
+Sprint review 2, 06.02.2025
+
+Durant cette review, il a été discuté des éléments réalisés depuis la dernière review, c’est-à-dire, la réalisation des maquettes de chaque page, les Product owners nous on fait pars de plusieurs fonctionnalités à ajouter/modifier sur le résultat des maquettes, voici donc un résumé de ces différentes fonctionnalités :
+
+Jeu du Snake
+
+Modification de l’apparence du serpent pour qu’il ait l’air plus « réaliste » (notamment avec la modification de la forme de sa tête pour qu’elle soit ovale).
+
+Modification de l’apparence des pommes pour qu’elles aient une apparence plus « réaliste » (notamment avec la modification de leur forme pour qu’elles soient plus rondes).
+
+Ajout d’un bouton permettant à l’utilisateur de retourner à l’accueil.
+
+Jeu du Flappy Bird
+
+Ajout d’un deuxième choix de personnage (ajouter une chauve-souris en plus de l’oiseau)
+
+Ajout d’un ennemi à éviter entre certains tuyaux (tout les 3 à 5 tuyaux)
+
+Jeu du Wordle
+
+Ajout d’un bouton de retour à l’accueil
+
+Ajout d’une fenêtre victoire/défaite à la fin de la partie
+
+Jeu du 2048
+
+Ajout d’un fond nuage lorsque l’utilisateur obtient un 2048
+
+Jeu du DinoWifi (qui a remplacé le jeu d’échecs)
+
+Durant la review, les PO nous ont communiqué que les jeux d’échecs allaient être remplacé par un jeu de type DinoWifi, voici donc les nouvelles fonctionnalités qui ont été demandée pour la réalisation de ce nouveau jeu :
+
+•	Style retro
+•	Fond nuages
+•	Sol en pierre
+•	Personnage Mario
+•	Déplacements réalisés à l’aide de la touche espace et des flèches directionnelles
+•	Score affiché en direct
+•	Goombas de Mario présent sur le terrain (à la place des cactus présent dans le DinoWifi originel)
+
+Le projet du jeu d’échecs à donc totalement été abandonnée.
+
+Page d’accueil
+
+Ajout d’un titre du jeu étant « BITSTORM »
+
+Ajout d’un logo (étant en lien avec les jeux vidéo)
+
+Ajout de flèche à gauche et à droite permettant de changer le jeu affiché (les jeux ne seront donc pas tous affichés sur la même page).
+
+Page de détails des jeux
+
+Rien à redire par rapport à cette page
+
+Voilà pour les différentes fonctionnalités, les PO ont précisé que lorsque la mise à jour de chaque maquette avait été réalisée, les développeurs pouvaient directement se lancer dans la réalisation de la page HTML, il est évident que les fonctionnalités décrites ci-dessus sont des fonctionnalités des jeux et que certaines ne seront pas forcément visible sur les maquettes. Les PO ont également précisé que les maquettes devaient être envoyées sur le groupe Teams directement après avoir été réalisée.
+
+
+Review 2.1, 13.02.2025
+
+Durant cette review, il a été discuté des différentes fonctionnalités qui devaient être réalisé concernant la programmation, en effet, les PO avaient précisé que les développeurs devaient directement commencer à créer les pages HTML après avoir terminé la réalisation des maquettes. Etant donné le fait que la plupart des développeurs avaient terminé la réalisation des maquettes, il était nécessaire de définir les différentes tâches à réaliser pour commencer la création des pages HTML. Voici donc une description des différentes tâches à réaliser et une moyenne du temps de réalisation que chacun des développeurs ont estimé pour chacune des tâches.
+
+Jeu du Snake
+
+Tâche	Temps estimé de réalisation
+Réalisation du tableau	15 min
+Ajout des boutons autour du jeu 	15 min
+Ajout du serpent et des pommes (le plus fidèle à la maquette possible)	30 min
+
+Jeu du Flappy Bird
+
+Tâche	Temps estimé de réalisation
+Réalisation de l’arrière-plan du jeu	~ 7 min
+Ajout des boutons autour du jeu 	15 min
+Ajout des oiseaux et des tuyaux	15 min
+
+ 
+Jeu du Wordle
+
+Tâche	Temps estimé de réalisation
+Réalisation du tableau	15 min
+Ajout des boutons autour du jeu 	15 min
+Ajout des fenêtres de vitoire, défaite, …	30 min
+
+Jeu du 2048
+
+Tâche	Temps estimé de réalisation
+Réalisation du tableau	15 min
+Ajout des boutons autour du jeu 	15 min
+
+
+Jeu du DinoWifi 
+
+Tâche	Temps estimé de réalisation
+Réalisation de l’arrière-plan et des personnages 	15 min
+Ajout des boutons autour du jeu 	15 min
+Ajout des fenêtres de lorsque l’on veut quitter, défaite, …	15 min
+
+
+Page d’accueil
+
+Tâche	Temps estimé de réalisation
+Ajout du titre et du logo à la page 	15 min
+Ajout des jeux au milieu de la page (avec flèches permettant de choisir le jeu 	15 min
+Réalisation du footer (adresse et symboles en bas de la page)	15 min
+
+ 
+Sprint rétrospective 2, 26.02.2025
+
+Durant cette réunion, il a été discuté des différents problèmes rencontrés durant le sprint 2 ainsi que des solutions pour résoudre ces problèmes, voici donc un résumé des diffèrents points abordés :
+
+Absences
+
+En effet, durant les sessions de travail, il arrive assez régulièrement que certains participants soient absent. Cela créée des problèmes concernant le rendu du travail effectué, de plus, il arrive que durant les absences, des réunions soient effectuées, cela pose un problème au niveau des informations communiquées à ces moments-là, voici donc les différentes solutions discutées pour résoudre ces diffèrents problèmes :
+
+•	Penser à « commit » et à « push » le plus régulièrement possible (au moins à la fin de chaque tâches) de façon à ce que tout le travail effectué soit disponible à n’importe quel moment, par n’importe qui et n’importe où.
+
+•	Penser à consulter les procès-verbaux déposés sur le canal Teams dès qu’ils sont publiés, toutes les informations communiquées durant les différentes réunions y seront inscrites
+
+Tâches
+
+En effet, durant les sessions de travail, il arrive que les tâches ne soient pas correctement mises à jour lorsque leurs états ont changé. Il arrive donc que durant les réunions, il y ait des incompréhensions lors de la présentation du travail au PO. Il arrive également que certaines tâches qui n’ont pas encore été traitées avec les PO se retrouvent dans la catégorie « Done », cela a pour cause de passer par-dessus des tâches à propos desquelles il était nécessaire de parler durant les réunions, voici donc les différentes solutions discutées pour résoudre ces diffèrents problèmes :
+
+•	Penser à mettre à jour les tâches dès que leurs états changent.
+
+•	Penser à mettre les tâches dans la catégorie « In Review » lorsqu’elles sont terminées et qu’elles n’ont toujours pas été traitées avec les PO.
+
+
+
+ 
+Sprint review 3, 26.02.2025
+
+Durant cette review, il a été discuté des éléments réalisés depuis la dernière review, c’est-à-dire, la réalisation des pages HTML (elles n’ont pas totalement été terminées), voici donc les différentes fonctionnalités à modifier/ajouter suite à la discussion :
+
+Fonctionnalités générales
+
+Les PO ont demandé à ce que le logo du jeu soit ajouté sur chacune des pages (comme cela a été fait sur la page de l’accueil, il a donc été discuté entre les développeurs que la personne ayant ajouté le logo à la page d’accueil envoie les dimensions sur le canal Teams)
+
+
+Jeu du Snake
+
+Changement de la couleur des pommes pourries pour du « vert caca pomme ».
+
+Jeu du Flappy Bird
+
+Cette partie du projet, suite à l’absence du développeur ayant les fichiers sur sa machine, n’a pas pu être présentée aux PO. La seule chose demandée par les PO et de montrer l’interface à la prochaine « Sprint review »
+
+Jeu du Wordle
+
+Ajout du clavier sur la page du Wordle
+
+Jeu du 2048
+
+Agrandir les diffèrents éléments de la page pour les rendre plus visibles
+
+Jeu du DinoWifi
+
+Rien de spécial, la progression du jeu à été réalisée selon les commentaires des PO
+
+Page d’accueil
+
+Ajout du titre du jeu en dessus du jeu
+Rendre la page responsive
+
+Page de détails des jeux
+
+Agrandir les diffèrents éléments de la page pour les rendre plus visibles
+ 
+Review 3.1, 27.02.2025
+
+Durant cette review, il a été discuté des différentes fonctionnalités qui devaient être réalisées suite aux indications données par les PO lors de la sprint review. Il a été défini entre les développeurs une estimation du temps que prendrait chaque tâche, voici donc un résumé des tâches définies :
+
+Jeu du Snake
+
+Tâche	Temps estimé de réalisation
+Changer la couleur de la pomme pourrie pour du « vert caca pomme »	~7 min
+
+Jeu du Wordle
+
+Tâche	Temps estimé de réalisation
+Ajout du clavier sur la page, comme sur la maquette	15 min
+
+Jeu du 2048
+
+Tâche	Temps estimé de réalisation
+Agrandissement des éléments de la page	15 min
+
+
+Page d’accueil
+
+Tâche	Temps estimé de réalisation
+Ajout du titre du jeu en dessus du choix du jeu 	15 min
+Rendre la page responsive	1.25 heures
+
+Logo
+
+Tâche	Temps estimé de réalisation
+Envoi des dimensions du logo dans le canal Teams	~ 7 min
+
+ 
+Daily scrums
+
+13.02.2025
+
+Leticia : 
+
+Terminé à 	50 %
+Difficultés rencontrées	Placer les boutons
+Tâches réalisées	2048 : 
+Réalisation du tableau (à pris plus de 15min  40 min)
+
+Samuel : 
+
+Terminé à 	80 %
+Difficultés rencontrées	Placer les éléments
+Tâches réalisées	Page d’accueil : 
+Ajout du titre et du logo (à pris 15 min)
+Ajout du jeu central (à pris plus de 15 min  30 min)
+
+Jérémie : 
+
+Terminé à 	30 %
+Difficultés rencontrées	Reprendre bootstrap
+Tâches réalisées	Page de détails : En cours (aucune tâches réellement réalisée)
+
+Vikki : 
+
+Terminé à 	30 %
+Difficultés rencontrées	Placer les éléments
+Tâches réalisées	Page Snake : 
+Création du tableau (à pris moins de 15 min  ~7 min)
+
+Adrien : 
+
+Terminé à 	0 %
+Difficultés rencontrées	Absent durant le Daily scrum
+Tâches réalisées	
+
+ 
+Thanavine : 
+
+Terminé à 	50 %
+Difficultés rencontrées	Aucune réelle difficultés
+Tâches réalisées	Page Wordle : 
+Ajout du tableau ( à pris plus de 15 min  20 min )
+
+Matviy : 
+
+Terminé à 	80 %
+Difficultés rencontrées	Rester fidèle à la maquette
+Tâches réalisées	Page Flappy Bird : 
+Ajout de l’arrière-plan (à pris moins de 15 min  5 min)
+Ajout des boutons (à pris 15 min)
+Ajout des oiseaux (à pris 15 min)
+
+ 
+26.02.2025
+
+Leticia : 
+
+Terminé à 	85 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Pas de nouvelles tâches terminées depuis la dernière Daily scrum
+
+Samuel : 
+
+Terminé à 	100 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Page d’accueil : 
+Ajout du footer en bas de la page (à pris plus de 15 minutes  30)
+
+Jérémie : 
+
+Terminé à 	70 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Page de détails : 
+Ajout des boutons sur la page (à pris 15 minutes)
+Ajout de l’image et du texte (à pris 15 minutes)
+
+Vikki : 
+
+Terminé à 	30 %
+Difficultés rencontrées	Placer correctement le tableau
+Tâches réalisées	Page Snake : 
+Ajout des boutons sur la page (à pris moins de 15 minutes  5)
+
+Adrien : 
+
+Terminé à 	0 %
+Difficultés rencontrées	Absent durant depuis la définition des tâches, aucunes tâches encore réalisée
+Tâches réalisées	
+
+ 
+Thanavine : 
+
+Terminé à 	70 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Page Wordle : 
+Ajout des boutons sur la page (à pris 15 minutes)
+
+Matviy : 
+
+Terminé à 	80 %
+Difficultés rencontrées	Absent durant le Daily scrum
+Tâches réalisées	
+
+ 
+27.02.2025
+
+Leticia : 
+
+Terminé à 	95 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Pas de nouvelles tâches terminées depuis la dernière Daily scrum
+
+Samuel : 
+
+Terminé à 	100 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Pas de nouvelles tâches terminées depuis la dernière Daily scrum
+
+Jérémie : 
+
+Terminé à 	90 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Pas de nouvelles tâches terminées depuis la dernière Daily scrum
+
+Vikki : 
+
+Terminé à 	40 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Pas de nouvelles tâches terminées depuis la dernière Daily scrum
+
+Adrien : 
+
+Terminé à 	35 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Pas de nouvelles tâches terminées depuis la dernière Daily scrum
+
+ 
+
+Thanavine : 
+
+Terminé à 	85 %
+Difficultés rencontrées	Pas de difficultés en plus de celle de la Daily scrum précédente
+Tâches réalisées	Pas de nouvelles tâches terminées depuis la dernière Daily scrum
+
+Matviy : 
+
+Terminé à 	80 %
+Difficultés rencontrées	Absent durant le Daily scrum
+Tâches réalisées	
+
+
+
+
+
+
+
