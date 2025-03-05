@@ -114,25 +114,25 @@
 <div class="container">
     <div class="title">Jeu Wordle</div>
 
-    <!-- Pseudo et bouton (à gauche) -->
+
     <div class="inputs">
         <img src="image/logo.png" alt="Logo" style="width: 75px; height: 75px; position: relative; top: 0; left: 0; margin-right: 10px;">
         <input type="text" id="pseudo" placeholder="Entrez votre pseudo" style="margin-left: 25px;">
     </div>
 
-    <!-- Tableau de jeu 5x5 (centré) -->
+
     <div class="board" id="board">
         <!-- Les cases du tableau seront ajoutées dynamiquement -->
     </div>
 </div>
 
-<!-- Boutons à droite -->
+
 <div class="button-container">
     <button onclick="confirmGoHome()">Retour à l'accueil</button>
     <button onclick="confirmRestartGame()">Recommencer</button>
 </div>
 
-<!-- Clavier virtuel -->
+
 <div class="keyboard" id="keyboard">
     <!-- Les boutons pour chaque lettre de l'alphabet -->
 </div>
@@ -155,7 +155,11 @@
 
 <script>
 
-    const key = 'QWERTZUIOPASDFGHJKLYXCVBNM'.split('');
+//    const key = 'QWERTZUIOPASDFGHJKLYXCVBNM'.split('');
+//    const key = 'qwertzuiopasdfghjklyxcvbnm'.split('');
+    const key1 = 'qwertzuiop'.split('');
+    const key2 = 'pasdfghjkl'.split('');
+    const key3 = 'yxcvbnm'.split('');
 
     // Création dynamique du tableau 5x5
     const board = document.getElementById('board');
@@ -183,6 +187,7 @@
         }
     }
 
+    /*
     // Ajouter les boutons du clavier
     const alphabet = key;
     alphabet.forEach(letter => {
@@ -194,10 +199,64 @@
         };
         keyboard.appendChild(button);
     });
+*/
 
-    // Fonction pour netourner à l'accueil
+    // Ajouter les boutons du clavier
+    //const alphabet = key;
+    const alphabet = [...key1, ...key2, ...key3];
+    alphabet.forEach(letter => {
+        const button = document.createElement('button');
+        button.textContent = letter;
+        button.onclick = function() {
+            // Remplir la première case vide
+            fillEmptyCell(letter);
+        };
+        keyboard.appendChild(button);
+    });
+
+    // Ajouter le bouton "Ajouter"
+    const addButton = document.createElement('button');
+    addButton.textContent = '';
+    addButton.onclick = function() {
+        // Logique pour ajouter une lettre
+        fillEmptyCell('A'); // Exemple: ajouter la lettre 'A'
+    };
+    keyboard.appendChild(addButton);
+
+    // Ajouter le bouton "Supprimer"
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = '';
+    deleteButton.onclick = function() {
+        // pour supprimer la dernière lettre
+        const cells = document.querySelectorAll('.board input');
+        for (let i = cells.length - 1; i >= 0; i--) {
+            if (cells[i].value !== '') {
+                cells[i].value = '';
+                break;
+            }
+        }
+    };
+    keyboard.appendChild(deleteButton);
+
+    addButton.style.backgroundColor = 'green';
+    addButton.style.color = 'white';
+    keyboard.appendChild(addButton);
+
+    deleteButton.style.backgroundColor = 'red';
+    deleteButton.style.color = 'white';
+    keyboard.appendChild(deleteButton);
+
+    // Fonction pour retourner à l'accueil
     function goHome() {
-        window.location.href = 'index.html';
+        window.location.href = '../Accueil/accueil.html';
+    }
+
+    // Fonction pour recommencer la partie
+    function restartGame() {
+        const cells = document.querySelectorAll('.board input');
+        for (let cell of cells) {
+            cell.value = '';
+        }
     }
 
     function confirmGoHome() {
@@ -220,10 +279,6 @@
     function showLosePopup() {
         document.getElementById('losePopup').style.display = 'block';
     }
-    function showLosePopup() {
-        document.getElementById('losePopup').style.display = 'block';
-    }
-
     function closePopup(popupId) {
         document.getElementById(popupId).style.display = 'none';
     }
