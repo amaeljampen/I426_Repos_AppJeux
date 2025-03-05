@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('font/font.ttf') format('truetype');
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'CustomFont', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f7f7;
+    background-image: url('texture/fond_site.jpeg');
+    background-size: cover;
+
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    padding: 10px;
+}
+
+.logo-img {
+    width: 75px;
+    height: 75px;
+    margin-left: 10px;
+}
+
+.score-display {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#game {
+    position: relative;
+    width: 60vw;
+    height: 40vh;
+    border: 1px solid #000;
+    overflow: hidden;
+    background-color: #fff;
+    background-image: url('texture/fond_jeu.png');
+    background-size: cover;
+    margin-top: 2vh;
+
+}
+
+#mario {
+    position: absolute;
+    bottom: 0;
+    width: 6vw;
+    height: 6vw;
+    margin-bottom: 2vh;
+    margin-left: 7.5vw;
+}
+
+#goumba {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 4vw;
+    height: 4vw;
+    margin-bottom: 2vh;
+    animation: moveCactus 2s linear infinite;
+}
+
+#ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2vh; /* Hauteur du sol */
+    background-image: url("texture/chemin_pierre.jpg");
+    background-repeat: repeat;
+}
+
+@keyframes moveCactus {
+    from {
+        right: 0;
+    }
+    to {
+        right: 100%;
+    }
+}

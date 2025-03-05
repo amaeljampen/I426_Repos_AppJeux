@@ -12,9 +12,9 @@ window.onload = function() {
 
 function setGame() {
     board = [
-        [2, 4, 8, 16],
-        [32, 64, 128, 256],
-        [512, 1024, 1024, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
         [0, 0, 0, 0]
     ];
 
@@ -48,16 +48,13 @@ function restartGame() {
 }
 
 function updateTile(tile, num) {
-    tile.innerText = "";
     tile.classList.value = "tile";
-
+    tile.classList.add("x" + num);
+    
     if (num > 0) {
-        tile.innerText = num;
-        tile.classList.add("x" + num);
-
-        if (num === 2048) {
-            document.getElementById("board").classList.add("board-winner");
-        }
+        tile.innerText = num;  // Affiche uniquement les chiffres > 0
+    } else {
+        tile.innerText = "";  // Supprime l'affichage du "0"
     }
 }
 
@@ -70,15 +67,13 @@ document.addEventListener('keydown', (e) => {
     else if (e.code === "ArrowDown") moved = slideDown();
 
     if (moved) {
-        setTimeout(setTwo, 200); // Ajoute une tuile après un petit délai
-        document.getElementById("score").innerText = score;
-        
-        if (isGameOver()) {
-            setTimeout(() => alert("Game Over!"));
-        }
+        setTimeout(() => {
+            setTwo(); // Ajoute une nouvelle tuile
+            if (isGameOver()) return; // Vérifie immédiatement si la partie est finie
+            document.getElementById("score").innerText = score;
+        }, 200);
     }
 });
-
 function filterZero(row) {
     return row.filter(num => num !== 0);
 }
@@ -168,7 +163,7 @@ function setTwo() {
 
     if (emptyTiles.length > 0) {
         let { r, c } = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
-        board[r][c] = 2;
+        board[r][c] = Math.random() < 0.9 ? 2 : 4; // 90% de chance d'un "2", 10% d'un "4"
         updateBoard();
     }
 }
@@ -178,21 +173,25 @@ function hasEmptyTile() {
 }
 
 function isGameOver() {
-    if (hasEmptyTile()) return false; // Si une case est vide, pas de Game Over
+    if (hasEmptyTile()) return false; // S'il reste des cases vides, ce n'est pas fini.
 
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
-            if (c < columns - 1 && board[r][c] === board[r][c + 1]) return false; // Vérifie si des cases adjacentes sont égales (horizontale)
-            if (r < rows - 1 && board[r][c] === board[r + 1][c]) return false; // Vérifie si des cases adjacentes sont égales (verticale)
+            if (c < columns - 1 && board[r][c] === board[r][c + 1]) return false; // Vérifie les cases adjacentes horizontalement
+            if (r < rows - 1 && board[r][c] === board[r + 1][c]) return false; // Vérifie les cases adjacentes verticalement
         }
     }
-
 
     if (score > bestScore) {
         bestScore = score;
         localStorage.setItem("bestScore", bestScore);
         document.getElementById("best-score").innerText = bestScore;
     }
-    return true; // Confirme que le jeu est terminé
-}
 
+    setTimeout(() => {
+        alert("Game Over! Votre score : " + score);
+        restartGame();
+    }, 300);
+
+    return true; // Indique que le jeu est terminé
+}

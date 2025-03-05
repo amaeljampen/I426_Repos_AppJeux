@@ -106,8 +106,7 @@ button:hover {
 #board {
     width: 600px;
     height: 600px;
-    background-color: #f5f0d9;
-    border: 6px solid #f4f5d1;
+    background-color: #cdc1b4;
     margin: 50px auto; /* Centre horizontalement */
     display: flex;
     flex-wrap: wrap;
@@ -158,6 +157,8 @@ button:hover {
 
 
 /* Couleurs des tuiles */
+.x0 { background-color: #f5f0d9; }
+
 .x2 { background-color: #eee4da; color: #727371; }
 .x4 { background-color: #ece0ca; color: #727371; }
 .x8 { background-color: #f4b17a; color: white; }
