@@ -1,0 +1,39 @@
+body{
+    color: white;
+    background-image: url(../Assets/fond_étoiler.jpeg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 3005px 2005px;
+    width:100%;
+}
+
+
+table{
+    border-collapse: collapse;
+}
+  
+td{
+    border: 1px solid white;
+    padding: 10px;
+   
+}
+
+.lightCase{
+    height: 30px;
+    width: 35px;
+    background-color: #A3BFD9;
+    opacity: 0.9;
+}
+
+.darkCase{
+    height: 30px;
+    width: 35px;
+    background-color: #2E4159;
+    opacity: 0.9;
+}
+
+
+
+* {
+    color: white;
+}
