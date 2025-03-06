@@ -3,20 +3,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>snake
-    </title>
+    <title>snake</title>
     <!-- Import styles -->
     <link rel="stylesheet" href="snake.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
+  <!-- <audio controls autoplay>
+    <source src="horse.ogg" type="audio/ogg">
+    <source src="eterna-cancao-wav-12569.mp3" type="audio/mpeg">
+  </audio> -->
   <div style="height: 13vh;">
     <div>
-      <img src="../assets/logo.png" style="width: 75px; height: 75px;  padding: 10px">
+      <img src="../Assets/logo.png" id="image">
     </div>
     <div>
-      <button type="button" class="btn btn-primary" style="margin-left: 1670px; height: 40px; width: 125px;">Acceuil</button>
+      <button type="button" class="btn btn-primary" id="acceuil">Acceuil</button>
     </div>
      
   </div>
@@ -24,11 +27,11 @@
     <div class="col-lg-12 col-sm-12" style="display: flex; flex-direction: row;">
       <div class="col-lg-4 col-sm-4"></div>
       <div class="col-lg-4 col-sm-4" style="display: flex; flex-direction: row; text-align: center;">
-        <img src="../assets/pomme.png" height="70px" style="padding-top: 20px; margin-bottom: 15px; padding-left: 20px;" class="img-rounded">
+        <img src="../assets/pomme.png" id="score_image" height="70px" class="img-rounded">
         <h1 style="margin-left: 5px; padding-top: 9px;">2</h1>
-        <button type="button" class="btn btn-info" style="text-align: center; margin-left: 227px; height: 40px; width: 125px; margin-top: 27px;">Restart</button>
+        <button type="button" class="btn btn-info" id="restart">Restart</button>
         <div class="form-group">
-          <input type="text" class="form-control" id="pseudo" style="margin-left: 10px; margin-top: 27px; width: 120px; height: 40px; font-size: large;">
+          <input type="text" class="form-control" id="pseudo">
         </div>
       </div>
       <div class="col-lg-4 col-sm-4"></div>
@@ -410,15 +413,11 @@
     <div class="col-lg-12" style="display: flex; flex-direction: row;">
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
-        <button type="button" class="btn btn-success" style="margin-left: 25px; height: 40px; width: 125px;">Facile</button>
-        <button type="button" class="btn btn-danger" style="height: 40px; width: 125px; margin-left: 5px;">Difficile</button>
+        <button type="button" class="btn btn-success" id="btn_facile">Facile</button>
+        <button type="button" class="btn btn-danger" id="btn_difficile">Difficile</button>
       </div>
       <div class="col-lg-4"></div>
     </div>
   </div>
-
-
-
-
 
 </body>

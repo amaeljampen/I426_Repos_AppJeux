@@ -1,6 +1,6 @@
 body{
     color: white;
-    background-image: url(../Assets/fond_étoiler.jpeg);
+    background-image: url(../assets/fond_étoiler.jpeg);
     background-attachment: fixed;
     background-position: center;
     background-size: 3005px 2005px;
@@ -33,7 +33,52 @@ td{
 }
 
 
-
 * {
     color: white;
+}
+
+#image {
+    width: 75px; 
+    height: 75px;  
+    padding: 10px
+}
+
+#acceuil {
+    margin-left: 1670px; 
+    height: 40px; 
+    width: 125px;
+}
+
+#score_image {
+    padding-top: 20px; 
+    margin-bottom: 15px; 
+    padding-left: 20px;
+}
+
+#restart {
+    text-align: center; 
+    margin-left: 227px; 
+    height: 40px; 
+    width: 125px; 
+    margin-top: 27px;
+}
+
+#pseudo {
+    margin-left: 10px; 
+    margin-top: 27px; 
+    width: 120px; 
+    height: 40px; 
+    font-size: large;
+}
+
+#btn_facile {
+    margin-left: 25px; 
+    height: 40px; 
+    width: 125px;
+}
+
+#btn_difficile {
+    height: 40px; 
+    width: 125px; 
+    margin-left: 5px;
 }
