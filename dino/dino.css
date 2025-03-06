@@ -35,7 +35,7 @@ body {
 header {
     width: 100%;
     display: flex;
-    justify-content: flex-start; /* Align items to the left */
+    justify-content: flex-start;
     padding: 10px;
 }
 
@@ -92,7 +92,7 @@ header {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2vh; /* Hauteur du sol */
+    height: 2vh;
     background-image: url("texture/chemin_pierre.jpg");
     background-repeat: repeat;
 }

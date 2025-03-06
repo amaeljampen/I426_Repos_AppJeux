@@ -96,3 +96,7 @@ function updateLivesDisplay() {
         livesDisplay.appendChild(heart);
     }
 }
+
+function goHome() {
+    window.location.href = '../Accueil/accueil.html';
+}
