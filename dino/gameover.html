@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Over</title>
+</head>
+<body>
+<h1>Game Over</h1>
+<p id="score-display"></p>
+<button onclick="window.location.href='dino.html'">Relancer la partie</button>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get('score');
+    document.getElementById('score-display').textContent = `Votre score: ${score}`;
+</script>
+</body>
+</html>

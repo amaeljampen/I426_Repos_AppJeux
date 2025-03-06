@@ -10,6 +10,17 @@ html, body {
     overflow: hidden;
 }
 
+#lives-display {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+}
+
 body {
     font-family: 'CustomFont', sans-serif;
     display: flex;
@@ -84,6 +95,11 @@ header {
     height: 2vh; /* Hauteur du sol */
     background-image: url("texture/chemin_pierre.jpg");
     background-repeat: repeat;
+}
+
+.home-button {
+    margin-left: auto;
+    padding-right: 10px;
 }
 
 @keyframes moveCactus {
