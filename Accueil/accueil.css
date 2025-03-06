@@ -98,10 +98,7 @@ button {
     display: flex;
     justify-content: space-between;
     top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    width: 100%;
+    width: 125%;
 }
 
 .button_select {
@@ -117,14 +114,14 @@ button {
 
 /* Positionnement des boutons à gauche et droite */
 .button_select.left {
-    left: 10px;
+    left: 100px;
 }
 
 .button_select.right {
     right: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
     #titre {
         font-size: 6vw;
     }
