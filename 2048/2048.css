@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 img {
     height: 100px;
     width: 100px;
@@ -84,7 +85,7 @@ button:hover {
     cursor: pointer;
     border: none;
     font-size: 35px;
-    transition: 0.3s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
 #home-btn:hover {
@@ -158,7 +159,6 @@ button:hover {
 
 /* Couleurs des tuiles */
 .x0 { background-color: #f5f0d9; }
-
 .x2 { background-color: #eee4da; color: #727371; }
 .x4 { background-color: #ece0ca; color: #727371; }
 .x8 { background-color: #f4b17a; color: white; }
