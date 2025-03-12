@@ -3,23 +3,26 @@ var score = 0;
 var bestScore = localStorage.getItem("bestScore") || 0; // Récupère le meilleur score stocké
 var rows = 4;
 var columns = 4;
+var gameWon = false;
 
 window.onload = function() {
     document.getElementById("restart").addEventListener("click", restartGame);
     document.getElementById("best-score").innerText = bestScore;
+
+    // Réinitialisation du meilleur score via le bouton
+    document.getElementById("reset-best-score").addEventListener("click", function() {
+        localStorage.removeItem("bestScore"); // Supprime complètement la valeur stockée
+        bestScore = 0; // Réinitialise la variable
+        document.getElementById("best-score").innerText = bestScore; // Met à jour l'affichage
+    });
+
     setGame();
 };
 
+
 function setGame() {
-    /*board = [
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0],
-        [0, 0, 0, 0]
-    ];
-    */
     board = [
-        [1024, 1024, 0, 0],
+        [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
@@ -27,7 +30,9 @@ function setGame() {
 
     document.getElementById("board").innerHTML = ""; // Vide la grille
     score = 0;
+    gameWon = false; // Réinitialiser la victoire
     document.getElementById("score").innerText = score;
+    document.getElementById("board").classList.remove("board-winner"); // Enlève l'image de fond
 
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
@@ -46,11 +51,12 @@ function setGame() {
 function restartGame() {
     if (score > bestScore) {
         bestScore = score;
-        localStorage.setItem("bestScore", bestScore);
+        localStorage.removeItem("bestScore"); // Supprime complètement la valeur stockée
+        bestScore = 0; 
         document.getElementById("best-score").innerText = bestScore;
+        
     }
     
-    document.getElementById("board").classList.remove("board-winner");
     setGame();
 }
 
@@ -59,9 +65,9 @@ function updateTile(tile, num) {
     tile.classList.add("x" + num);
     
     if (num > 0) {
-        tile.innerText = num;  // Affiche uniquement les chiffres > 0
+        tile.innerText = num;
     } else {
-        tile.innerText = "";  // Supprime l'affichage du "0"
+        tile.innerText = "";
     }
 }
 
@@ -75,12 +81,13 @@ document.addEventListener('keydown', (e) => {
 
     if (moved) {
         setTimeout(() => {
-            setTwo(); // Ajoute une nouvelle tuile
-            if (isGameOver()) return; // Vérifie immédiatement si la partie est finie
+            setTwo(); 
+            if (isGameOver()) return;
             document.getElementById("score").innerText = score;
         }, 200);
     }
 });
+
 function filterZero(row) {
     return row.filter(num => num !== 0);
 }
@@ -93,6 +100,13 @@ function slide(row) {
             row[i] *= 2;
             row[i+1] = 0;
             score += row[i];
+
+            // Mise à jour du bestScore immédiatement après une fusion
+            if (score > bestScore) {
+                bestScore = score;
+                localStorage.setItem("bestScore", bestScore);
+                document.getElementById("best-score").innerText = bestScore;
+            }
         }
     }
 
@@ -148,24 +162,18 @@ function slideDown() {
 }
 
 function updateBoard() {
-    let reached2048 = false;
-
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
             let tile = document.getElementById(r.toString() + "-" + c.toString());
             updateTile(tile, board[r][c]);
 
-            if (board[r][c] === 2048) {
-                reached2048 = true;
+            if (board[r][c] === 2048 && !gameWon) {
+                document.getElementById("board").classList.add("board-winner");
+                gameWon = true;
             }
         }
     }
-
-    if (reached2048) {
-        document.getElementById("board").classList.add("board-winner");
-    }
 }
-
 
 function setTwo() {
     if (!hasEmptyTile()) return;
@@ -181,7 +189,7 @@ function setTwo() {
 
     if (emptyTiles.length > 0) {
         let { r, c } = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
-        board[r][c] = Math.random() < 0.9 ? 2 : 4; // 90% de chance d'un "2", 10% d'un "4"
+        board[r][c] = Math.random() < 0.9 ? 2 : 4;
         updateBoard();
     }
 }
@@ -191,19 +199,13 @@ function hasEmptyTile() {
 }
 
 function isGameOver() {
-    if (hasEmptyTile()) return false; // S'il reste des cases vides, ce n'est pas fini.
+    if (hasEmptyTile()) return false;
 
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
-            if (c < columns - 1 && board[r][c] === board[r][c + 1]) return false; // Vérifie les cases adjacentes horizontalement
-            if (r < rows - 1 && board[r][c] === board[r + 1][c]) return false; // Vérifie les cases adjacentes verticalement
+            if (c < columns - 1 && board[r][c] === board[r][c + 1]) return false;
+            if (r < rows - 1 && board[r][c] === board[r + 1][c]) return false;
         }
-    }
-
-    if (score > bestScore) {
-        bestScore = score;
-        localStorage.setItem("bestScore", bestScore);
-        document.getElementById("best-score").innerText = bestScore;
     }
 
     setTimeout(() => {
@@ -211,5 +213,5 @@ function isGameOver() {
         restartGame();
     }, 300);
 
-    return true; // Indique que le jeu est terminé
+    return true;
 }
