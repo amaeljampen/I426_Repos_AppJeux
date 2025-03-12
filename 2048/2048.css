@@ -1,4 +1,4 @@
-/* style.css */
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
@@ -12,25 +12,22 @@ img {
     height: 100px;
     width: 100px;
 }
-
 h2, button {
     display: block;
-    padding: 30px 40px;
+    padding: 20px 40px;
     border-radius: 10px;
     background: #FFF;
-    cursor: pointer;
-    margin: 10px auto;
+    width: 268px; 
+    margin: 15px auto;
     font-size: 30px;
-    border: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
+    
 }
 .top-left-menu {
     display: flex;
     justify-content: flex-start; /* Aligne les boutons à gauche */
     gap: 15px; /* Espacement entre les boutons */
     position: absolute;
-    top: 20px; /* Distance depuis le haut */
+    top: 50px; /* Distance depuis le haut */
     left: 20px; /* Distance depuis la gauche */
 }
 
@@ -44,10 +41,10 @@ button {
     border: none;
     font-size: 16px;
     text-align: center;
-    transition: 0.3s ease-in-out;
+    transition: 0.1s ease-in-out;
     font-size: 30px;
+    font-weight: bold;
 }
-
 
 button:hover {
     background: #f4b17a;
@@ -69,9 +66,9 @@ button:hover {
     font-size: 30px;
 }
 #pseudo-input {
-    width: 150px; /* Largeur du champ de texte */
-    height: 30px;
-    padding: 5px;
+    width: 120px; /* Largeur du champ de texte */
+    height: 20px;
+    padding: 1px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -108,7 +105,7 @@ button:hover {
     width: 600px;
     height: 600px;
     background-color: #cdc1b4;
-    margin: 50px auto; /* Centre horizontalement */
+    margin: 100px auto; /* Centre horizontalement */
     display: flex;
     flex-wrap: wrap;
     gap: 10px; /* Espacement uniforme entre les tuiles */
@@ -137,7 +134,7 @@ button:hover {
 
 /* Animation d’apparition des nouvelles tuiles */
 .new-tile {
-    animation: pop-in 0.2s ease-out;
+    animation: pop-in 0.1s ease-out;
 }
 
 @keyframes pop-in {
