@@ -11,8 +11,15 @@ window.onload = function() {
 };
 
 function setGame() {
-    board = [
+    /*board = [
         [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
+    ];
+    */
+    board = [
+        [1024, 1024, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
@@ -141,13 +148,24 @@ function slideDown() {
 }
 
 function updateBoard() {
+    let reached2048 = false;
+
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
             let tile = document.getElementById(r.toString() + "-" + c.toString());
             updateTile(tile, board[r][c]);
+
+            if (board[r][c] === 2048) {
+                reached2048 = true;
+            }
         }
     }
+
+    if (reached2048) {
+        document.getElementById("board").classList.add("board-winner");
+    }
 }
+
 
 function setTwo() {
     if (!hasEmptyTile()) return;

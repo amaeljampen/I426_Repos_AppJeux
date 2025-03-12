@@ -11,6 +11,11 @@ body {
 img {
     height: 100px;
     width: 100px;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    top: 0;
+
 }
 h2, button {
     display: block;
@@ -24,10 +29,10 @@ h2, button {
 }
 .top-left-menu {
     display: flex;
-    justify-content: flex-start; /* Aligne les boutons à gauche */
+    justify-content: flex-start; /* Aligne les boutons à droite */
     gap: 15px; /* Espacement entre les boutons */
     position: absolute;
-    top: 50px; /* Distance depuis le haut */
+    top: 600px; /* Distance depuis le haut */
     left: 20px; /* Distance depuis la gauche */
 }
 
@@ -56,8 +61,8 @@ button:hover {
     flex-direction: column; /* Affiche les éléments en colonne */
     align-items: flex-start; /* Aligne à gauche */
     position: absolute;
-    top: 25px; /* Distance depuis le haut */
-    left: 25px; 
+    top: 136px; /* Distance depuis le haut */
+    left: 250px; 
     font-size: 40px;
     gap: 10px; /* Espacement entre les éléments */
 }
@@ -97,15 +102,15 @@ button:hover {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 137px;
+    right: 250px;
 }
 
 #board {
     width: 600px;
     height: 600px;
     background-color: #cdc1b4;
-    margin: 100px auto; /* Centre horizontalement */
+    margin: 150px auto; /* Centre horizontalement */
     display: flex;
     flex-wrap: wrap;
     gap: 10px; /* Espacement uniforme entre les tuiles */
