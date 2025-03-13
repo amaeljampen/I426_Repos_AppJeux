@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <audio autoplay loop>
+        <source src="Undertale Ost 077 - ASGORE.mp3" type="audio/mpeg">
+    </audio>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +15,14 @@
         <div class="container"> 
             <h2>Score: <span id="score">0</span></h2>
             <button id="restart">Recommencer</button>
-            <h2>Meilleur Score: <span id="best-score">0</span></h2>
+            <h2>Meilleur Score: <span id="best-score"></span></h2>
         </div>
-        <div id="board">
-            <!-- Tiles will be generated dynamically -->
-        </div>
+        <div id="board"></div>
+        <img id="logo" src="./IMG/logo.png" alt="2048">
         <div class="pseudos">
-            <img src="./IMG/logo.png" alt="2048">
-            <h2>Pseudo : <input type="text" id="pseudo-input" placeholder="Entrez votre pseudo"></h2>
             <button id="home-btn">Accueil</button>
+            <h2>Pseudo : <input type="text" id="pseudo-input" placeholder="Votre pseudo"></h2>
+            <button id="reset-best-score">Réinitialiser le Meilleur Score</button>
         </div>
     </body>
 </html>
