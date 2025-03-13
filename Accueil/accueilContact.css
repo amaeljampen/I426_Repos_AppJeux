@@ -34,6 +34,7 @@ body > div {
     align-items: center;
     padding: 10px;
     border-radius: 50px;
+    margin-bottom: 10px;
 }
 
 .ProfilProg img {
@@ -75,6 +76,13 @@ body > div {
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-    margin-left: 20px;
-    margin-right: 80px;
+    margin: 0;
+    padding: 10px;
+}
+
+.Header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }

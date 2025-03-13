@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("texture/fond_site.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+        }
+
+        h1 {
+            color: #ff0000;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #game {
+            width: 60vw;
+            height: 40vh;
+            border: 1px solid #000;
+            overflow: hidden;
+            background-color: #fff;
+            background-image: url('texture/fond_jeu.png');
+            background-size: cover;
+            background-position: center;
+            margin-top: 2vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2vh;
+            background-image: url("texture/chemin_pierre.jpg");
+            background-repeat: repeat;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="game">
+    <button onclick="window.location.href='dino.html'">Relancer la partie</button>
+</div>
+<h1>Game Over</h1>
+<p id="score-display">Votre score : 0</p>
+
+
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get('score');
+    document.getElementById('score-display').textContent = `Votre score : ${score}`;
+</script>
+</body>
+</html>
