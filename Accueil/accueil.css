@@ -98,10 +98,7 @@ button {
     display: flex;
     justify-content: space-between;
     top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    width: 100%;
+    width: 125%;
 }
 
 .button_select {
