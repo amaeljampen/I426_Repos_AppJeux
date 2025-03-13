@@ -169,11 +169,12 @@ function draw(){
     // Apply gravity
     bY += gravity;
 
+    /*
     // Draw score
     ctx.fillStyle = "#000";
     ctx.font = "20px Verdana";
     ctx.fillText("Score : "+score,10,cvs.height-20);
-    
+    */
     requestAnimationFrame(draw);
 }
 
