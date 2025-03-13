@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <audio autoplay loop>
-    <source src="mice_on_venus.mp3" type="audio/mpeg">
+    <audio id="audio1" src="subwoofer_lullaby.mp3" type="audio/mpeg"></audio>
+    <audio id="audio2" src="wet_hand.mp3" type="audio/mpeg"></audio>
 </audio>
 <head>
     <meta charset="UTF-8">
@@ -11,31 +12,23 @@
 </head>
 <body>
 
-
-
-<!-- <audio id="music" src="musique/suede.mp4" autoplay loop></audio> -->
-
 <div class="container">
     <div class="title">Jeu Wordle</div>
-
 
     <div class="inputs">
         <img src="image/logo.png" alt="Logo" style="width: 75px; height: 75px; position: relative; top: 0; left: 0; margin-right: 10px;">
         <input type="text" id="pseudo" placeholder="Entrez votre pseudo" style="margin-left: 25px;">
     </div>
 
-
     <div class="board" id="board">
         <!-- Les cases du tableau seront ajoutées dynamiquement -->
     </div>
 </div>
 
-
 <div class="button-container">
     <button onclick="confirmGoHome()">Retour à l'accueil</button>
     <button onclick="confirmRestartGame()">Recommencer</button>
 </div>
-
 
 <div class="keyboard" id="keyboard">
     <!-- Les boutons pour chaque lettre de l'alphabet -->

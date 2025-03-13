@@ -1,4 +1,18 @@
 
+// pour la musique de fond
+const audio1 = document.getElementById('audio1');
+const audio2 = document.getElementById('audio2');
+
+audio1.addEventListener('ended', () => {
+    audio2.play();
+});
+
+audio2.addEventListener('ended', () => {
+    audio1.play();
+});
+
+// Démarrer la lecture du premier fichier audio
+audio1.play();
 //    const key = 'QWERTZUIOPASDFGHJKLYXCVBNM'.split('');
 //    const key = 'qwertzuiopasdfghjklyxcvbnm'.split('');
 const key1 = 'qwertzuiop'.split('');
@@ -114,7 +128,6 @@ function confirmRestartGame() {
         restartGame();
     }
 }
-
 
 // a supprimer plus tard
 function showWinPopup() {
