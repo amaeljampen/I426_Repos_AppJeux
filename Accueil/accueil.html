@@ -5,27 +5,17 @@
     <title>I426_AppJeux</title>
     <link rel="stylesheet" type="text/css" href="accueil.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
-    <div>
+    <div id="app">
         <div class="header">
-            <a href="accueil.html"><img src="images/logo.png" alt="logo BitStorm"></a>
+            <a href="#"><img id="logo" src="images/logo.png" alt="logo BitStorm"></a>
             <h1 id="titre">BITSTORM</h1>
         </div>
-        <div class="game">
-            <div class="game_container">
-                <h2 id="game_title">2048</h2>
-                <img src="images/2048.png" alt="image jeu" class="game_choose">
-            </div>
-            <div class="button_container">
-                <button class="button_select">
-                    <i class="glyphicon glyphicon-menu-left"></i>
-                </button>
-                <button class="button_select">
-                    <i class="glyphicon glyphicon-menu-right"></i>
-                </button>
-            </div>
+        <div class="game-display">
+            <game-display></game-display>
         </div>
     </div>
 </body>
@@ -45,5 +35,9 @@
         </div>
     </div>
 </footer>
+
+<script src="main.js"></script>
+<script src="Component/GameDisplay.js"></script>
+<script>App.mount('#app')</script>
 
 </html>
