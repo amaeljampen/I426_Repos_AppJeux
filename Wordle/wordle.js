@@ -62,8 +62,11 @@ alphabet.forEach(letter => {
 });
 
 // Add the "Add" button
+// Add the "Add" button
 const addButton = document.createElement('button');
 addButton.textContent = 'Add';
+addButton.style.backgroundColor = 'green'; // Set background color to green
+addButton.style.color = 'white'; // Set text color to white
 addButton.onclick = function() {
     const cells = document.querySelectorAll('.board input');
     let enteredWord = '';
@@ -85,6 +88,8 @@ keyboard.appendChild(addButton);
 // Add the "Delete" button
 const deleteButton = document.createElement('button');
 deleteButton.textContent = 'Delete';
+deleteButton.style.backgroundColor = 'red'; // Set background color to red
+deleteButton.style.color = 'white'; // Set text color to white
 deleteButton.onclick = function() {
     const cells = document.querySelectorAll('.board input');
     for (let i = cells.length - 1; i >= 0; i--) {
@@ -125,9 +130,12 @@ function checkWord(enteredWord, currentRow) {
         // Disable the current row
         cells.forEach(cell => cell.disabled = true);
 
-        // Enable the next row
-        const nextRow = currentRow + 1;
-        if (nextRow < 5) {
+        // Check if it's the last row
+        if (currentRow === 4) {
+            showLosePopup();
+        } else {
+            // Enable the next row
+            const nextRow = currentRow + 1;
             const nextRowCells = document.querySelectorAll(`.board input[data-row='${nextRow}']`);
             nextRowCells.forEach(cell => cell.disabled = false);
         }
@@ -139,7 +147,16 @@ function showWinPopup() {
     document.getElementById('winPopup').style.display = 'block';
 }
 function showLosePopup() {
-    document.getElementById('losePopup').style.display = 'block';
+    const losePopup = document.getElementById('losePopup');
+    losePopup.innerHTML = `
+        <h2 style="font-size: 3em; background-color: red; padding: 10px; border-radius: 5px;">
+            Partie perdu... <br> :( <br> Le mot était: ${targetWord}
+        </h2>
+        <button onclick="confirmGoHome()" style="padding: 15px 30px; font-size: 1.5em;">Accueil</button>
+        <button onclick="confirmRestartGame()" style="padding: 15px 30px; font-size: 1.5em;">Recommencer</button>
+        <button onclick="closePopup('losePopup')" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; font-size: 1em;">X</button>
+    `;
+    losePopup.style.display = 'block';
 }
 
 function closePopup(popupId) {
