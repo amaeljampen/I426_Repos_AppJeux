@@ -27,6 +27,9 @@ enemy.src = "textures/enemy.png";
 
 
 // variables
+var maxVelocity = 1.5;
+var velocity = 0;
+var jumpStrength = -10; 
 
 var gap = 120;
 var constant;
@@ -34,18 +37,23 @@ var constant;
 var bX = 10;
 var bY = 150;
 
-var gravity = 1.5;
+var gravity = 1.7;
 
 var score = 0;
 
-var eX = 40;
-var eY = 40;
+var eX = 35;
+var eY = 35;
 
 // on key down
 document.addEventListener("keydown",moveUp);
 
+function shouldSpawnEnemy() {
+    chance = Math.random() < 0.5;
+    return chance
+}
+
 function moveUp(){
-    bY -= 35;
+    velocity = jumpStrength;
 }
 
 // pipe coordinates
@@ -53,8 +61,8 @@ var pipe = [];
 
 pipe[0] = {
     x : cvs.width,
-    y : 0,
-    hasEnemy: Math.random() < 0.25
+    y : -90,
+    hasEnemy: shouldSpawnEnemy()
 };
 
 function getRandomEnemyY() {
@@ -76,8 +84,8 @@ function resetGame() {
     pipe = []; // Reset pipes array
     pipe[0] = {
         x: cvs.width,
-        y: 0,
-        hasEnemy: Math.random() < 0.25
+        y: -90,
+        hasEnemy: shouldSpawnEnemy()
     };
 
     // Reset enemy object independently
@@ -108,8 +116,8 @@ function draw(){
         if( pipe[i].x == 125 ){
             pipe.push({
                 x : cvs.width,
-                y: Math.floor(Math.random() * pipeNorth.height) - pipeNorth.height,
-                hasEnemy: Math.random() < 0.25
+                y: -Math.floor(Math.random() * (pipeNorth.height / 2)),
+                hasEnemy: shouldSpawnEnemy()
             });
         }
 
@@ -139,14 +147,34 @@ function draw(){
     
     if (pipe.length >= 2) {
         for (var i = 0; i < pipe.length - 1; i++) {
+            if (!pipe[i].hasEnemy && !pipe[i + 1].hasEnemy) {
+                continue;
+            }
+
             var gapEnemyX = ((pipe[i].x + pipeNorth.width) + pipe[i + 1].x) / 2;
             if (!enemies[i]) {
+                var spawnAbove = Math.random() < 0.5; 
+                var enemyY;
+                
+                if (spawnAbove) {
+                    enemyY = pipe[i].y + pipeNorth.height - eY - 5;
+                    if (enemyY < 0) {
+                        enemyY = 0;
+                    }
+                } else {
+                    enemyY = pipe[i].y + constant + 5;
+                    if (enemyY + eY > cvs.height - fg.height) {
+                        enemyY = pipe[i].y + pipeNorth.height - eY - Math.floor(Math.random() * 5);
+                    }
+                }
+                
                 enemies[i] = {
                     x: gapEnemyX,
-                    y: getRandomEnemyY()
+                    y: enemyY
                 };
+                console.log("Enemy created at:", enemies[i].x, enemies[i].y);
             } else {
-                enemies[i].x = gapEnemyX;
+                enemies[i].x = gapEnemyX - 15;
             }
             ctx.drawImage(enemy, enemies[i].x, enemies[i].y, eX, eY);
             if (
@@ -167,7 +195,11 @@ function draw(){
     ctx.drawImage(bird, bX, bY);
 
     // Apply gravity
-    bY += gravity;
+    velocity += gravity;
+    if (velocity > maxVelocity) {
+        velocity = maxVelocity;
+    }
+    bY += velocity;
 
     /*
     // Draw score
