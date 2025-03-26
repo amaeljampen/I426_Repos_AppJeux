@@ -61,8 +61,7 @@ alphabet.forEach(letter => {
     keyboard.appendChild(button);
 });
 
-// Add the "Add" button
-// Add the "Add" button
+
 const addButton = document.createElement('button');
 addButton.textContent = 'Add';
 addButton.style.backgroundColor = 'green'; // Set background color to green
@@ -85,7 +84,7 @@ addButton.onclick = function() {
 };
 keyboard.appendChild(addButton);
 
-// Add the "Delete" button
+
 const deleteButton = document.createElement('button');
 deleteButton.textContent = 'Delete';
 deleteButton.style.backgroundColor = 'red'; // Set background color to red
@@ -168,16 +167,24 @@ function goHome() {
     window.location.href = '../Accueil/accueil.html';
 }
 
-// Function to restart the game
+
 function restartGame() {
     const cells = document.querySelectorAll('.board input');
     for (let cell of cells) {
         cell.value = '';
-        cell.disabled = cell.dataset.row !== '0'; // Disable all rows except the first one
-        cell.style.backgroundColor = 'white'; // Reset the background color
+        cell.disabled = cell.dataset.row !== '0';
+        cell.style.backgroundColor = 'white';
     }
-    closePopup('winPopup'); // Close the win popup if open
-    closePopup('losePopup'); // Close the lose popup if open
+
+    // Reset the colors of the keyboard buttons, except "Add" and "Delete"
+    const buttons = document.querySelectorAll('.keyboard button');
+    buttons.forEach(button => {
+        if (button.textContent !== 'Add' && button.textContent !== 'Delete') {
+            button.style.backgroundColor = 'white';
+        }
+    });
+    closePopup('winPopup');
+    closePopup('losePopup');
 }
 
 function confirmGoHome() {

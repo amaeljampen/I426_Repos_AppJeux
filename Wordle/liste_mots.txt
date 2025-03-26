@@ -16,6 +16,7 @@ coeur
 vieux
 tissu
 piste
+pieds
 voile
 payer
 nager
@@ -30,6 +31,7 @@ lutte
 roule
 jeter
 baton
+bites
 grive
 sable
 fiche
