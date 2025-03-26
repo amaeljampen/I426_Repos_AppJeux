@@ -63,7 +63,7 @@ header {
     border: 1px solid #000;
     overflow: hidden;
     background-color: #fff;
-    background-image: url('texture/fond_jeu.png');
+    background-image: url('texture/fond_jeu.gif');
     background-size: cover;
     margin-top: 2vh;
 

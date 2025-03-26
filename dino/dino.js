@@ -1,10 +1,16 @@
-const dino = document.getElementById('mario');
-const cactus = document.getElementById('goumba');
-const gameArea = document.getElementById('game');
+let score = 0;
+let highScore = localStorage.getItem('highScore') || 0; // Récupère le high-score depuis le localStorage ou 0 si aucun n'est défini
+
+// Affiche le high-score au début du jeu
+document.getElementById('high-score').textContent = `Hi: ${highScore}`;
+
 let lives = 3;
 let isJumping = false;
 let isInvincible = false; // Empêche la perte de vies immédiate après un coup
 
+const dino = document.getElementById('mario');
+const cactus = document.getElementById('goumba');
+const gameArea = document.getElementById('game');
 const livesDisplay = document.createElement('div');
 livesDisplay.id = 'lives-display';
 livesDisplay.style.position = 'absolute';
@@ -26,6 +32,9 @@ function jump() {
     let position = 0;
     const marioHeight = dino.clientHeight;
     const jumpHeight = marioHeight * 2; // Ajustez la hauteur du saut
+
+    const jumpSound = new Audio('saut.mp3');
+    jumpSound.play();
 
     dino.src = 'texture/mario_saut.png';
 
@@ -49,20 +58,56 @@ function jump() {
     }, 20);
 }
 
+function squashGoumba() {
+    let frame = 0; // Compteur pour l'animation
+    const goumbaImages = [
+        'texture/goumba_ecrase/gomba_ecraser1.png',
+        'texture/goumba_ecrase/gomba_ecraser2.png',
+        'texture/goumba_ecrase/gomba_ecraser3.png',
+        'texture/goumba_ecrase/gomba_ecraser4.png',
+        'texture/goumba_ecrase/gomba_ecraser5.png'
+    ];
+
+    const goumba = document.getElementById('goumba');
+
+    // Animation de l'aplatissement
+    const squashInterval = setInterval(() => {
+        goumba.src = goumbaImages[frame];
+        frame++;
+
+        if (frame === goumbaImages.length) {
+            clearInterval(squashInterval); // Stoppe l'animation après la dernière image
+            goumba.src = 'texture/new_gomba.gif'; // Remet l'image du Goumba normal sous forme de GIF
+        }
+    }, 100); // Change l'image toutes les 100ms (ajuste selon la vitesse souhaitée)
+}
+
 // Vérifie la collision toutes les 10ms
 setInterval(() => {
     const dinoRect = dino.getBoundingClientRect();
     const cactusRect = cactus.getBoundingClientRect();
 
-    if (!isInvincible &&
-        dinoRect.left < cactusRect.right &&
+    if (!isInvincible && dinoRect.left < cactusRect.right &&
         dinoRect.right > cactusRect.left &&
         dinoRect.bottom > cactusRect.top &&
         dinoRect.top < cactusRect.bottom
     ) {
-        loseLife();
+        if (isJumping) {
+            squashGoumba(); // Si Mario saute, écrase le Goumba
+        } else {
+            loseLife(); // Si Mario ne saute pas, il perd une vie
+        }
     }
 }, 10);
+
+
+
+setInterval(updateScore, 10); // Mise à jour du score chaque 10ms (centièmes de seconde)
+
+function updateScore() {
+    score++;
+    document.getElementById('current-score').textContent = `Score: ${score}`;
+}
 
 function loseLife() {
     lives--;
@@ -82,7 +127,15 @@ function loseLife() {
 
     if (lives === 0) {
         alert('Game Over!');
-        window.location.href = `gameover.html?score=${document.getElementById('current-score').textContent.split(': ')[1]}`;
+
+        // Vérification du high-score
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem('highScore', highScore); // Sauvegarde du nouveau high-score
+        }
+
+        // Redirection avec score et high-score
+        window.location.href = `gameover.html?score=${score}&highScore=${highScore}`;
     }
 }
 

@@ -32,6 +32,20 @@
     <div id="ground"></div> <!-- sol -->
 
 </div>
-<script src="dino.js"></script>
+<script src="dino.js">
+
+    // Récupérer les paramètres de l'URL (score et highScore)
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get('score');
+    const highScore = urlParams.get('highScore');
+
+    // Si le high-score n'est pas fourni dans l'URL, utiliser localStorage
+    const displayedHighScore = highScore || localStorage.getItem('highScore') || 0;
+
+    // Afficher le score actuel et le high-score
+    document.getElementById('score').textContent = `Score: ${score}`;
+    document.getElementById('high-score').textContent = `High Score: ${displayedHighScore}`;
+</script>
+
 </body>
 </html>
