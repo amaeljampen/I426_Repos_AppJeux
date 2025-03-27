@@ -58,47 +58,23 @@ function jump() {
     }, 20);
 }
 
-function squashGoumba() {
-    let frame = 0; // Compteur pour l'animation
-    const goumbaImages = [
-        'texture/goumba_ecrase/gomba_ecraser1.png',
-        'texture/goumba_ecrase/gomba_ecraser2.png',
-        'texture/goumba_ecrase/gomba_ecraser3.png',
-        'texture/goumba_ecrase/gomba_ecraser4.png',
-        'texture/goumba_ecrase/gomba_ecraser5.png'
-    ];
-
-    const goumba = document.getElementById('goumba');
-
-    // Animation de l'aplatissement
-    const squashInterval = setInterval(() => {
-        goumba.src = goumbaImages[frame];
-        frame++;
-
-        if (frame === goumbaImages.length) {
-            clearInterval(squashInterval); // Stoppe l'animation après la dernière image
-            goumba.src = 'texture/new_gomba.gif'; // Remet l'image du Goumba normal sous forme de GIF
-        }
-    }, 100); // Change l'image toutes les 100ms (ajuste selon la vitesse souhaitée)
-}
 
 // Vérifie la collision toutes les 10ms
 setInterval(() => {
     const dinoRect = dino.getBoundingClientRect();
-    const cactusRect = cactus.getBoundingClientRect();
+    const goumbaRect = goumba.getBoundingClientRect(); // Correction : utiliser "goumba" au lieu de "cactus"
 
-    if (!isInvincible && dinoRect.left < cactusRect.right &&
-        dinoRect.right > cactusRect.left &&
-        dinoRect.bottom > cactusRect.top &&
-        dinoRect.top < cactusRect.bottom
+    if (!isInvincible &&
+        dinoRect.left < goumbaRect.right &&
+        dinoRect.right > goumbaRect.left &&
+        dinoRect.bottom > goumbaRect.top &&
+        dinoRect.top < goumbaRect.bottom
     ) {
-        if (isJumping) {
-            squashGoumba(); // Si Mario saute, écrase le Goumba
-        } else {
-            loseLife(); // Si Mario ne saute pas, il perd une vie
-        }
+        // Mario perd une vie, peu importe s'il saute ou non
+        loseLife();
     }
 }, 10);
+
 
 
 
