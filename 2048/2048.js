@@ -22,7 +22,7 @@ window.onload = function() {
 
 function setGame() {
     board = [
-        [0, 0, 0, 0],
+        [0,1024, 1024, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
@@ -32,7 +32,16 @@ function setGame() {
     score = 0;
     gameWon = false; // Réinitialiser la victoire
     document.getElementById("score").innerText = score;
-    document.getElementById("board").classList.remove("board-winner"); // Enlève l'image de fond
+    
+    document.getElementById("board").classList.remove("board-winner1");
+    document.getElementById("board").classList.remove("board-winner2");
+    document.getElementById("board").classList.remove("board-winner3");
+    document.getElementById("board").classList.remove("board-winner4");
+    document.getElementById("board").classList.remove("board-winner5");
+    document.getElementById("board").classList.remove("board-winner6"); 
+    document.getElementById("board").classList.remove("board-winner7");
+    document.getElementById("board").classList.remove("board-winner8");
+    document.getElementById("board").classList.remove("board-winner9");
 
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
@@ -167,9 +176,45 @@ function updateBoard() {
             let tile = document.getElementById(r.toString() + "-" + c.toString());
             updateTile(tile, board[r][c]);
 
+            
+            if (board[r][c] === 8) {
+                document.getElementById("board").classList.add("board-winner1");
+                
+            }
+            if (board[r][c] === 16) {
+                document.getElementById("board").classList.add("board-winner2");
+                
+            }
+            if (board[r][c] === 32) {
+                document.getElementById("board").classList.add("board-winner3");
+               
+            }
+            if (board[r][c] === 64) {
+                document.getElementById("board").classList.add("board-winner4");
+                
+            }
+            if (board[r][c] === 128) {
+                document.getElementById("board").classList.add("board-winner5");
+                
+            }
+            if (board[r][c] === 256) {
+                document.getElementById("board").classList.add("board-winner6");
+                
+            }
+            if (board[r][c] === 512) {
+                document.getElementById("board").classList.add("board-winner7");
+                
+            }
+            if (board[r][c] === 1024) {
+                document.getElementById("board").classList.add("board-winner8");
+                
+            }
             if (board[r][c] === 2048 && !gameWon) {
-                document.getElementById("board").classList.add("board-winner");
+                document.getElementById("board").classList.add("board-winner9");
                 gameWon = true;
+                setTimeout(() => {
+                    alert("Félicitations ! Vous avez atteint 2048 !");
+                }, 200);
             }
         }
     }
