@@ -79,7 +79,10 @@ function spawnEnemy() {
 function resetGame() {
     bX = 10; // Reset bird's X coordinate
     bY = 150; // Reset bird's Y coordinate
+
     score = 0; // Reset score
+    velocity = 0;
+    enemies = [];
 
     pipe = []; // Reset pipes array
     pipe[0] = {
@@ -92,8 +95,6 @@ function resetGame() {
     enemyObj.exists = false;
 }
 
-
-
 // Draw images
 function draw(){
     ctx.clearRect(0, 0, cvs.width, cvs.height); // Clear canvas
@@ -105,7 +106,6 @@ function draw(){
         constant = pipeNorth.height + gap;
         ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);
         ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);
-        
         
         if (pipe[i]) {
             pipe[i].x--; // Move pipe to the left
@@ -136,15 +136,21 @@ function draw(){
         }
     
         /*
-        if(pipe[i].x == 5){
+        if ((pipe[i].x + pipeNorth.width < bX) && !pipe[i].scored) {
             score++;
+            pipe[i].scored = true;
+            if (pipe[i].x + pipeNorth.width < 0) {
+                pipe.splice(i, 1);
+                i--;
+                pipe[i].scored = false;
+            }
         }
         */
     }
 
-
     // if (!enemyObj.exists && pipe.length >= 2 && pipe[1] !== undefined) {
     
+    // Updates and renders enemy objects in the gaps between adjacent pipes.
     if (pipe.length >= 2) {
         for (var i = 0; i < pipe.length - 1; i++) {
             if (!pipe[i].hasEnemy && !pipe[i + 1].hasEnemy) {
@@ -167,16 +173,18 @@ function draw(){
                         enemyY = pipe[i].y + pipeNorth.height - eY - Math.floor(Math.random() * 5);
                     }
                 }
-                
                 enemies[i] = {
                     x: gapEnemyX,
                     y: enemyY
                 };
                 console.log("Enemy created at:", enemies[i].x, enemies[i].y);
             } else {
-                enemies[i].x = gapEnemyX - 15;
+                enemies[i].x = gapEnemyX - 30;
             }
+
             ctx.drawImage(enemy, enemies[i].x, enemies[i].y, eX, eY);
+
+            // Collision detection: if the bird collides with the enemy, reset the game.
             if (
                 bX + bird.width >= enemies[i].x &&
                 bX <= enemies[i].x + eX &&
@@ -192,7 +200,7 @@ function draw(){
     ctx.drawImage(fg, 0, cvs.height - fg.height);
 
     // Draw bird
-    ctx.drawImage(bird, bX, bY);
+    ctx.drawImage(bird, bX, bY, bird.width * 0.8, bird.height * 0.8);
 
     // Apply gravity
     velocity += gravity;
@@ -201,12 +209,12 @@ function draw(){
     }
     bY += velocity;
 
-    /*
+/*
     // Draw score
     ctx.fillStyle = "#000";
     ctx.font = "20px Verdana";
     ctx.fillText("Score : "+score,10,cvs.height-20);
-    */
+*/
     requestAnimationFrame(draw);
 }
 
