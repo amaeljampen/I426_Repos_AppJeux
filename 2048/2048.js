@@ -3,16 +3,26 @@ var score = 0;
 var bestScore = localStorage.getItem("bestScore") || 0; // Récupère le meilleur score stocké
 var rows = 4;
 var columns = 4;
+var gameWon = false;
 
 window.onload = function() {
     document.getElementById("restart").addEventListener("click", restartGame);
     document.getElementById("best-score").innerText = bestScore;
+
+    // Réinitialisation du meilleur score via le bouton
+    document.getElementById("reset-best-score").addEventListener("click", function() {
+        localStorage.removeItem("bestScore"); // Supprime complètement la valeur stockée
+        bestScore = 0; // Réinitialise la variable
+        document.getElementById("best-score").innerText = bestScore; // Met à jour l'affichage
+    });
+
     setGame();
 };
 
+
 function setGame() {
     board = [
-        [0, 0, 0, 0],
+        [0,1024, 1024, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
@@ -20,7 +30,18 @@ function setGame() {
 
     document.getElementById("board").innerHTML = ""; // Vide la grille
     score = 0;
+    gameWon = false; // Réinitialiser la victoire
     document.getElementById("score").innerText = score;
+    
+    document.getElementById("board").classList.remove("board-winner1");
+    document.getElementById("board").classList.remove("board-winner2");
+    document.getElementById("board").classList.remove("board-winner3");
+    document.getElementById("board").classList.remove("board-winner4");
+    document.getElementById("board").classList.remove("board-winner5");
+    document.getElementById("board").classList.remove("board-winner6"); 
+    document.getElementById("board").classList.remove("board-winner7");
+    document.getElementById("board").classList.remove("board-winner8");
+    document.getElementById("board").classList.remove("board-winner9");
 
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
@@ -39,11 +60,12 @@ function setGame() {
 function restartGame() {
     if (score > bestScore) {
         bestScore = score;
-        localStorage.setItem("bestScore", bestScore);
+        localStorage.removeItem("bestScore"); // Supprime complètement la valeur stockée
+        bestScore = 0; 
         document.getElementById("best-score").innerText = bestScore;
+        
     }
     
-    document.getElementById("board").classList.remove("board-winner");
     setGame();
 }
 
@@ -52,9 +74,9 @@ function updateTile(tile, num) {
     tile.classList.add("x" + num);
     
     if (num > 0) {
-        tile.innerText = num;  // Affiche uniquement les chiffres > 0
+        tile.innerText = num;
     } else {
-        tile.innerText = "";  // Supprime l'affichage du "0"
+        tile.innerText = "";
     }
 }
 
@@ -68,12 +90,13 @@ document.addEventListener('keydown', (e) => {
 
     if (moved) {
         setTimeout(() => {
-            setTwo(); // Ajoute une nouvelle tuile
-            if (isGameOver()) return; // Vérifie immédiatement si la partie est finie
+            setTwo(); 
+            if (isGameOver()) return;
             document.getElementById("score").innerText = score;
         }, 200);
     }
 });
+
 function filterZero(row) {
     return row.filter(num => num !== 0);
 }
@@ -86,6 +109,13 @@ function slide(row) {
             row[i] *= 2;
             row[i+1] = 0;
             score += row[i];
+
+            // Mise à jour du bestScore immédiatement après une fusion
+            if (score > bestScore) {
+                bestScore = score;
+                localStorage.setItem("bestScore", bestScore);
+                document.getElementById("best-score").innerText = bestScore;
+            }
         }
     }
 
@@ -145,6 +175,47 @@ function updateBoard() {
         for (let c = 0; c < columns; c++) {
             let tile = document.getElementById(r.toString() + "-" + c.toString());
             updateTile(tile, board[r][c]);
+
+            
+            if (board[r][c] === 8) {
+                document.getElementById("board").classList.add("board-winner1");
+                
+            }
+            if (board[r][c] === 16) {
+                document.getElementById("board").classList.add("board-winner2");
+                
+            }
+            if (board[r][c] === 32) {
+                document.getElementById("board").classList.add("board-winner3");
+               
+            }
+            if (board[r][c] === 64) {
+                document.getElementById("board").classList.add("board-winner4");
+                
+            }
+            if (board[r][c] === 128) {
+                document.getElementById("board").classList.add("board-winner5");
+                
+            }
+            if (board[r][c] === 256) {
+                document.getElementById("board").classList.add("board-winner6");
+                
+            }
+            if (board[r][c] === 512) {
+                document.getElementById("board").classList.add("board-winner7");
+                
+            }
+            if (board[r][c] === 1024) {
+                document.getElementById("board").classList.add("board-winner8");
+                
+            }
+            if (board[r][c] === 2048 && !gameWon) {
+                document.getElementById("board").classList.add("board-winner9");
+                gameWon = true;
+                setTimeout(() => {
+                    alert("Félicitations ! Vous avez atteint 2048 !");
+                }, 200);
+            }
         }
     }
 }
@@ -163,7 +234,7 @@ function setTwo() {
 
     if (emptyTiles.length > 0) {
         let { r, c } = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
-        board[r][c] = Math.random() < 0.9 ? 2 : 4; // 90% de chance d'un "2", 10% d'un "4"
+        board[r][c] = Math.random() < 0.9 ? 2 : 4;
         updateBoard();
     }
 }
@@ -173,19 +244,13 @@ function hasEmptyTile() {
 }
 
 function isGameOver() {
-    if (hasEmptyTile()) return false; // S'il reste des cases vides, ce n'est pas fini.
+    if (hasEmptyTile()) return false;
 
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
-            if (c < columns - 1 && board[r][c] === board[r][c + 1]) return false; // Vérifie les cases adjacentes horizontalement
-            if (r < rows - 1 && board[r][c] === board[r + 1][c]) return false; // Vérifie les cases adjacentes verticalement
+            if (c < columns - 1 && board[r][c] === board[r][c + 1]) return false;
+            if (r < rows - 1 && board[r][c] === board[r + 1][c]) return false;
         }
-    }
-
-    if (score > bestScore) {
-        bestScore = score;
-        localStorage.setItem("bestScore", bestScore);
-        document.getElementById("best-score").innerText = bestScore;
     }
 
     setTimeout(() => {
@@ -193,5 +258,5 @@ function isGameOver() {
         restartGame();
     }, 300);
 
-    return true; // Indique que le jeu est terminé
+    return true;
 }

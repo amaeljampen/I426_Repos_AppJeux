@@ -1,22 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>I426_AppJeux</title>
-    <link rel="stylesheet" type="text/css" href="flappy_bird.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+<html>
+  <head>
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="flappy_bird.css" />
+  </head>
+  <body>
+    <audio autoplay loop>
+        <source src="textures\8bitmusicloop.mp3" type="audio/mpeg">
+    </audio>
+    <!-- Background image field -->
+    <img class="bgImage" src="textures\fond.png" alt="Background Image">
 
-<body>
-<div>
-    <div class="header">
-        <a href="flappy_bird.html"><img src="../Accueil/images/logo.png" alt="logo BitStorm" class="logo"></a>
+    <!-- Logo image -->
+    <img class="logo" src="textures\logo.png" alt="logo">
+
+    <!-- Button at the top left -->
+    <a href="../Accueil/accueil.html"><button class="button" style="font-weight: bold">Accueil</button></a>
+
+    <!-- Highlighted field on the right for adding elements -->
+    <div class="rightPanel">
+        <input type="text" class="inputField" placeholder="Enter your name">
+
+        <!-- Label "Best score" -->
+        <div class="sectionTitle" style="color: #FFF;">Best score: 0</div>
+
+        <!-- Difficulty level selector -->
+        <div class="difficultySwitch">
+            <select id="difficulty">
+                <option value="easy">Normal</option>
+                <option value="hard">Hard mode</option>
+            </select>
+
+         <!-- Label "Choose Your Character" -->
+         <div class="characterSelection" style="color: #FFF;">
+            Choose Your Character:</div>
+
+        <!-- Buttons with images -->
+        <div class="characterButtons">
+            <img src="textures\fb_menu.png" style="height: 80px; width: 100px;" alt="Character 1">
+            <img src="textures\2ndBird.png" alt="Character 2">
+        </div>
     </div>
-</div>
-</body>
 
-<footer class="footer">
+    </div>
+   
+    <!-- Canvas field -->
+    <canvas id="flappyBird" width="288" height="512"></canvas> 
+    <!--<canvas id="flappyBird"></canvas>-->
 
-</footer>
 
+
+<!--
+    <div class="imageBox">
+        <img src="C:\Users\px80gjy\Desktop\ProjAgile\I426_Repos_AppJeux\Flappy_bird\textures\model.png" alt="Image" id="imagePlaceholder">
+    </div>
+-->
+
+   <script src="flappy_bird.js"></script>
+  </body>
 </html>

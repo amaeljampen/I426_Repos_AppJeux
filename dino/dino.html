@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <head>
     <meta charset="UTF-8">
     <title>Dino Game</title>
     <link rel="stylesheet" href="dino.css">
 </head>
 <body>
+
 <header>
     <div class="logo">
-        <img src="texture/logo.png" alt="Popcorn Icon" class="logo-img">
+        <img src="texture/logo.png" alt="Logo" class="logo-img">
     </div>
 
     <div class="home-button">
-        <button onclick="window.location.href='index_pageAccueil.html'">Accueil</button>
+        <a href="../Accueil/accueil.html"><button class="home-button" onclick="goHome()" style="padding: 15px 30px; font-size: 1.5em;">Accueil</button></a>
     </div>
-
-
 </header>
 <div id="game">
 
@@ -23,9 +26,11 @@
         <span id="high-score">Hi: 0</span>
         <span id="current-score">Score: 0</span>
     </div>
+
     <img id="mario" src="texture/mario_marche.png" alt="Mario">
     <img id="goumba" src="texture/new_gomba.gif" alt="Goumba">
     <div id="ground"></div> <!-- sol -->
+
 </div>
 <script src="dino.js"></script>
 </body>
