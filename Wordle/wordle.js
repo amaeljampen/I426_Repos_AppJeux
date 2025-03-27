@@ -183,6 +183,17 @@ function restartGame() {
             button.style.backgroundColor = 'white';
         }
     });
+
+    // Select a new random word from the list
+    fetch('liste_mots.txt')
+        .then(response => response.text())
+        .then(data => {
+            const words = data.split('\n').map(word => word.trim()).filter(word => word.length === 5);
+            targetWord = words[Math.floor(Math.random() * words.length)];
+            console.log('New target word:', targetWord);
+        })
+        .catch(error => console.error('Error loading word list:', error));
+
     closePopup('winPopup');
     closePopup('losePopup');
 }
