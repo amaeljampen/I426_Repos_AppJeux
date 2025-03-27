@@ -1,137 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
+<audio autoplay loop>
+    <audio src="subwoofer_lullaby.mp3" type="audio/mpeg"></audio>
+</audio>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="wordle.css">
     <title>Jeu Wordle</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('image/fond_etoile.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .title {
-            font-size: 6em;
-            margin-bottom: 20px;
-            color: white;
-        }
-        .inputs {
-            display: flex;
-            align-items: center;
-            position: absolute;
-            left: 20px;
-            top: 20px;
-        }
-        .inputs input {
-            padding: 15px;
-            font-size: 1.5em;
-            margin-right: 20px;
-            width: 250px;
-        }
-        .inputs button {
-            padding: 10px 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .inputs button:hover {
-            background-color: #45a049;
-        }
-        .board {
-            display: grid;
-            grid-template-columns: repeat(5, 80px);
-            grid-gap: 15px;
-            margin-top: 100px;
-        }
-        .board input {
-            width: 80px;
-            height: 80px;
-            text-align: center;
-            font-size: 2em;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            background-color: white;
-        }
-        /* Style pour la section des boutons à droite */
-        .button-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .button-container button {
-            padding: 10px 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-        .button-container button:hover {
-            background-color: #0056b3;
-        }
-        /* Clavier virtuel */
-        .keyboard {
-            display: grid;
-            grid-template-columns: repeat(10, 60px);
-            grid-gap: 10px;
-            margin-top: 30px;
-        }
-        .keyboard button {
-            padding: 15px;
-            font-size: 1.5em;
-            cursor: pointer;
-            background-color: #f1f1f1;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .keyboard button:hover {
-            background-color: #ddd;
-        }
-    </style>
 </head>
 <body>
 
 <div class="container">
     <div class="title">Jeu Wordle</div>
 
-
     <div class="inputs">
         <img src="image/logo.png" alt="Logo" style="width: 75px; height: 75px; position: relative; top: 0; left: 0; margin-right: 10px;">
         <input type="text" id="pseudo" placeholder="Entrez votre pseudo" style="margin-left: 25px;">
     </div>
-
 
     <div class="board" id="board">
         <!-- Les cases du tableau seront ajoutées dynamiquement -->
     </div>
 </div>
 
-
 <div class="button-container">
     <button onclick="confirmGoHome()">Retour à l'accueil</button>
     <button onclick="confirmRestartGame()">Recommencer</button>
 </div>
-
 
 <div class="keyboard" id="keyboard">
     <!-- Les boutons pour chaque lettre de l'alphabet -->
@@ -143,7 +39,7 @@
     <button onclick="confirmRestartGame()" style="padding: 15px 30px; font-size: 1.5em;">Recommencer</button>
     <button onclick="closePopup('winPopup')" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; font-size: 1em;">X</button>
 </div>
-<button onclick="showWinPopup()">Afficher Popup Victoire</button>
+<!-- <button onclick="showWinPopup()">Afficher Popup Victoire</button> -->
 
 <div id="losePopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: url('image/fond_etoile.jpeg'); padding: 40px; border: 10px solid red; border-radius: 10px; text-align: center; width: 500px; height: 300px;">
     <h2 style="font-size: 3em; background-color: red; padding: 10px; border-radius: 5px;">Partie perdu... <br> :( </h2>
@@ -151,138 +47,9 @@
     <button onclick="confirmRestartGame()" style="padding: 15px 30px; font-size: 1.5em;">Recommencer</button>
     <button onclick="closePopup('losePopup')" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; font-size: 1em;">X</button>
 </div>
-<button onclick="showLosePopup()">Afficher Popup Défaite</button>
+<<!-- button onclick="showLosePopup()">Afficher Popup Défaite</button> -->
 
-<script>
-
-//    const key = 'QWERTZUIOPASDFGHJKLYXCVBNM'.split('');
-//    const key = 'qwertzuiopasdfghjklyxcvbnm'.split('');
-    const key1 = 'qwertzuiop'.split('');
-    const key2 = 'pasdfghjkl'.split('');
-    const key3 = 'yxcvbnm'.split('');
-
-    // Création dynamique du tableau 5x5
-    const board = document.getElementById('board');
-    const keyboard = document.getElementById('keyboard');
-
-    // Ajouter 5 lignes et 5 colonnes pour le tableau
-    for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 5; j++) {
-            const input = document.createElement('input');
-            input.style.width = '80px';
-            input.style.height = '80px';
-            input.type = 'text';
-            input.maxLength = 1; // Limiter à une lettre
-            board.appendChild(input);
-        }
-    }
-
-    function fillEmptyCell(letter) {
-        const cells = document.querySelectorAll('.board input');
-        for (let cell of cells) {
-            if (cell.value === '') {
-                cell.value = letter;
-                break;
-            }
-        }
-    }
-
-    /*
-    // Ajouter les boutons du clavier
-    const alphabet = key;
-    alphabet.forEach(letter => {
-        const button = document.createElement('button');
-        button.textContent = letter;
-        button.onclick = function() {
-            // Remplir la première case vide
-            fillEmptyCell(letter);
-        };
-        keyboard.appendChild(button);
-    });
-*/
-
-    // Ajouter les boutons du clavier
-    //const alphabet = key;
-    const alphabet = [...key1, ...key2, ...key3];
-    alphabet.forEach(letter => {
-        const button = document.createElement('button');
-        button.textContent = letter;
-        button.onclick = function() {
-            // Remplir la première case vide
-            fillEmptyCell(letter);
-        };
-        keyboard.appendChild(button);
-    });
-
-    // Ajouter le bouton "Ajouter"
-    const addButton = document.createElement('button');
-    addButton.textContent = '';
-    addButton.onclick = function() {
-        // Logique pour ajouter une lettre
-        fillEmptyCell('A'); // Exemple: ajouter la lettre 'A'
-    };
-    keyboard.appendChild(addButton);
-
-    // Ajouter le bouton "Supprimer"
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = '';
-    deleteButton.onclick = function() {
-        // pour supprimer la dernière lettre
-        const cells = document.querySelectorAll('.board input');
-        for (let i = cells.length - 1; i >= 0; i--) {
-            if (cells[i].value !== '') {
-                cells[i].value = '';
-                break;
-            }
-        }
-    };
-    keyboard.appendChild(deleteButton);
-
-    addButton.style.backgroundColor = 'green';
-    addButton.style.color = 'white';
-    keyboard.appendChild(addButton);
-
-    deleteButton.style.backgroundColor = 'red';
-    deleteButton.style.color = 'white';
-    keyboard.appendChild(deleteButton);
-
-    // Fonction pour retourner à l'accueil
-    function goHome() {
-        window.location.href = '../Accueil/accueil.html';
-    }
-
-    // Fonction pour recommencer la partie
-    function restartGame() {
-        const cells = document.querySelectorAll('.board input');
-        for (let cell of cells) {
-            cell.value = '';
-        }
-    }
-
-    function confirmGoHome() {
-        if (confirm('Êtes-vous sûr de vouloir retourner à l\'accueil ?')) {
-            goHome();
-        }
-    }
-
-    function confirmRestartGame() {
-        if (confirm('Êtes-vous sûr de vouloir recommencer la partie ?')) {
-            restartGame();
-        }
-    }
-
-
-    // a supprimer plus tard
-    function showWinPopup() {
-        document.getElementById('winPopup').style.display = 'block';
-    }
-    function showLosePopup() {
-        document.getElementById('losePopup').style.display = 'block';
-    }
-    function closePopup(popupId) {
-        document.getElementById(popupId).style.display = 'none';
-    }
-</script>
+<script src="wordle.js"></script>
 
 </body>
 </html>
