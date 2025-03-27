@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <audio autoplay loop>
-    <audio id="audio1" src="subwoofer_lullaby.mp3" type="audio/mpeg"></audio>
-    <audio id="audio2" src="wet_hand.mp3" type="audio/mpeg"></audio>
+    <audio src="subwoofer_lullaby.mp3" type="audio/mpeg"></audio>
 </audio>
 <head>
     <meta charset="UTF-8">
@@ -40,7 +39,7 @@
     <button onclick="confirmRestartGame()" style="padding: 15px 30px; font-size: 1.5em;">Recommencer</button>
     <button onclick="closePopup('winPopup')" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; font-size: 1em;">X</button>
 </div>
-<button onclick="showWinPopup()">Afficher Popup Victoire</button>
+<!-- <button onclick="showWinPopup()">Afficher Popup Victoire</button> -->
 
 <div id="losePopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: url('image/fond_etoile.jpeg'); padding: 40px; border: 10px solid red; border-radius: 10px; text-align: center; width: 500px; height: 300px;">
     <h2 style="font-size: 3em; background-color: red; padding: 10px; border-radius: 5px;">Partie perdu... <br> :( </h2>
@@ -48,7 +47,7 @@
     <button onclick="confirmRestartGame()" style="padding: 15px 30px; font-size: 1.5em;">Recommencer</button>
     <button onclick="closePopup('losePopup')" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px; font-size: 1em;">X</button>
 </div>
-<button onclick="showLosePopup()">Afficher Popup Défaite</button>
+<<!-- button onclick="showLosePopup()">Afficher Popup Défaite</button> -->
 
 <script src="wordle.js"></script>
 

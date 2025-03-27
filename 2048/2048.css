@@ -119,11 +119,54 @@ button:hover {
     justify-content: center; /* Assure un bon alignement des tuiles */
 }
 
-.board-winner {
+
+.board-winner1 {
+    background-image: url("./IMG/1200-L-la-grille-de-dpart-du-gp-dmilie-romagne.jpg"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner2 {
+    background-image: url("./IMG/alpine_f1_2022_2.jpg"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner3 {
+    background-image: url("./IMG/Desktop_LH2.jpg"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner4 {
+    background-image: url("./IMG/formule_1_grand_prix_italie_charles_leclerc_631d949373446_0.jpg"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner5 {
+    background-image: url("./IMG/gwupvrlwyaau1qn.jpg"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner6 {
+    background-image: url("./IMG/Japan Desktop Wallpaper 2.png"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner7 {
+    background-image: url("./IMG/Las Vegas GP 2023 Desktop 2.jpg"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner8 {
+    background-image: url("./IMG/Mexico City GP 2024 Desktop Wallpaper 1.jpg"); /* Image de fond */
+    background-size: cover;
+    background-position: center;
+}
+.board-winner9 {
     background-image: url("./IMG/sky-2690418_960_720.jpg"); /* Image de fond */
     background-size: cover;
     background-position: center;
 }
+
+
 
 .tile {
     width: 142px;
