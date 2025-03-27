@@ -22,7 +22,7 @@ window.onload = function() {
 
 function setGame() {
     board = [
-        [0,1024, 1024, 0],
+        [0,0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
