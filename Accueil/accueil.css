@@ -7,12 +7,7 @@ html, body {
     justify-content: space-between;
 }
 
-#logo {
-    width: 75px;
-    height: 75px;
-}
-
-.logo {
+img {
     width: 75px;
     height: 75px;
 }
@@ -103,7 +98,10 @@ button {
     display: flex;
     justify-content: space-between;
     top: 50%;
-    width: 125%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 100%;
 }
 
 .button_select {
@@ -124,13 +122,6 @@ button {
 
 .button_select.right {
     right: 10px;
-}
-
-.a_propos {
-    width: 33.3%;
-    text-align: center;
-    font-size: 24px;
-
 }
 
 @media (max-width: 768px) {
